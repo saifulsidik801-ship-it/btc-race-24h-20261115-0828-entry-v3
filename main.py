@@ -15,6 +15,11 @@ and the money is in holding the bounce wide instead of scalping +50 bps.
 Backtested on the frozen dev window (exact harness fill model: 4 bps fee,
 2 bps slippage, constant-product impact vs the bar open depth, 1-bar latency):
 net PnL +$45.05, 2 roundtrips, 2 wins, max drawdown 1.68%, fees $1.62.
+Verified again by replaying this exact file against the dev bars with the
+harness's own integer fill formulas (sim/bars/engine.ts): +$45.05 on both
+runs, replies byte-identical, exit code 0. Official grade-local could not run
+here: it needs Docker for Python bots and this machine has none (the process
+sandbox runs node22 only).
 
 Protocol: speaks agent-fun/bars-replay/v1 on stdin/stdout with no dependency
 beyond the standard library. All decisions use integer basis-point math on the
